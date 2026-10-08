@@ -1,0 +1,51 @@
+:root {
+    --bg-primary: #060a0f;
+    --bg-surface: #0f1722;
+    --bg-surface-elevated: #1a2636;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --accent-success: #10b981;
+    --accent-danger: #ef4444;
+    --accent-blue: #059669;
+    --accent-mint: #34d399;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius: 12px;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); background-color: var(--bg-primary); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.site-header { background-color: var(--bg-surface); padding: 2.5rem 0; border-bottom: 1px solid var(--bg-surface-elevated); }
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.brand h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.025em; }
+.subtitle { color: var(--text-muted); margin-top: 0.25rem; font-size: 0.95rem; }
+.grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin: 3rem auto; }
+.panel { background-color: var(--bg-surface); padding: 2rem; border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.02); }
+.full-width { grid-column: span 2; }
+h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+.panel-desc { color: var(--text-muted); font-size: 0.87rem; margin-bottom: 1.5rem; }
+.control-group { margin-bottom: 1.5rem; }
+.control-group label { display: block; font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted); }
+.form-input { width: 100%; background-color: var(--bg-primary); border: 1px solid var(--bg-surface-elevated); color: var(--text-main); padding: 0.75rem 1rem; border-radius: 6px; font-family: var(--font-mono); outline: none; }
+.form-input:focus { border-color: var(--accent-mint); }
+.btn-group { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.btn { flex: 1; font-family: var(--font-sans); font-weight: 600; font-size: 0.875rem; padding: 0.85rem 1rem; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.15s var(--transition), opacity 0.15s var(--transition); will-change: transform; }
+.btn:active { transform: scale(0.98); }
+.btn-danger { background-color: var(--accent-danger); color: white; }
+.btn-success { background-color: var(--accent-blue); color: white; }
+.live-telemetry { background-color: var(--bg-primary); border-radius: 8px; padding: 1rem; font-family: var(--font-mono); font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--bg-surface-elevated); }
+.metric .label { color: var(--text-muted); }
+.metric .value { font-weight: 500; color: var(--accent-success); }
+.status-idle { color: var(--text-muted) !important; }
+.status-running { color: var(--accent-danger) !important; animation: pulse 1s infinite alternate; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.metric-card { background-color: var(--bg-primary); padding: 1.25rem; border-radius: 8px; border: 1px solid var(--bg-surface-elevated); }
+.metric-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+.metric-large { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0; color: var(--accent-mint); }
+.metric-card p { font-size: 0.75rem; color: var(--text-muted); }
+.image-showcase { content-visibility: auto; contain-intrinsic-size: 500px; margin-top: 1rem; }
+.img-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 10; background-color: var(--bg-primary); border-radius: var(--radius); overflow: hidden; }
+.site-footer { text-align: center; padding: 3rem 0; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--bg-surface-elevated); }
+@keyframes pulse { from { opacity: 0.5; } to { opacity: 1; } }
+@media (max-width: 768px) { .grid-layout { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } .btn-group { flex-direction: column; } }

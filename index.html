@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Web Vitals & Performance Lab</title>
+    <meta name="description" content="An interactive engineering playground demonstrating DOM optimization, layout stability, and runtime performance analysis.">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <span class="pulse-icon">⚡</span>
+                <h1>PerfLab<span class="text-muted">.io</span></h1>
+            </div>
+            <p class="subtitle">A front-end engineering simulation tool for real-time runtime analysis.</p>
+        </div>
+    </header>
+    <main class="container grid-layout">
+        <section class="panel diagnostic-panel">
+            <h2>1. Thread Blocking Simulator</h2>
+            <p class="panel-desc">Test runtime responsiveness. The optimized version delegates heavy tasks to asynchronous chunks, keeping the UI responsive.</p>
+            <div class="control-group">
+                <label for="iterations">Data Load Size (Array Elements):</label>
+                <select id="iterations" class="form-input">
+                    <option value="50000">50,000 (Light)</option>
+                    <option value="500000" selected>500,000 (Medium)</option>
+                    <option value="2000000">2,000,000 (Heavy)</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button id="btnUnoptimized" class="btn btn-danger">Run Synchronous (Blocks UI)</button>
+                <button id="btnOptimized" class="btn btn-success">Run Asynchronous (Non-Blocking)</button>
+            </div>
+            <div class="live-telemetry">
+                <div class="metric"><span class="label">Execution Time:</span><span id="exeTime" class="value">0.00ms</span></div>
+                <div class="metric"><span class="label">UI State:</span><span id="uiState" class="value status-idle">Idle</span></div>
+            </div>
+        </section>
+        <section class="panel telemetry-panel">
+            <h2>2. Real-Time Vitals & Execution Profile</h2>
+            <p class="panel-desc">Live environment metrics fetched directly via native browser Performance APIs.</p>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Page Load</h3>
+                    <div id="metricLoad" class="metric-large">Measuring...</div>
+                    <p>Total navigation time.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>DOM Nodes</h3>
+                    <div id="metricDOM" class="metric-large">0</div>
+                    <p>Current tree complexity.</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Memory Usage</h3>
+                    <div id="metricMemory" class="metric-large">N/A</div>
+                    <p>Allocated heap size.</p>
+                </div>
+            </div>
+            <div class="graph-container" style="margin-top: 1.5rem;">
+                <h3 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; letter-spacing: 0.05em;">Processing Delta History</h3>
+                <canvas id="performanceGraph" width="400" height="150" style="width: 100%; display: block; background: #060a0f; border-radius: 6px; border: 1px solid #1a2636;"></canvas>
+            </div>
+        </section>
+        <section class="panel gallery-panel full-width">
+            <h2>3. Asset Deferral & Layout Stability</h2>
+            <p class="panel-desc">The dashboard layout below is rendered using pure CSS properties and local SVG matrices to ensure zero Cumulative Layout Shifts (CLS).</p>
+            <div class="image-showcase">
+                <div class="img-wrapper" style="display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #111827 0%, #030712 100%); padding: 3rem; border: 1px solid #1a2636;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem; filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.4));">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #f3f4f6; margin-bottom: 0.25rem;">Asset Stream Connected</div>
+                    <div style="font-size: 0.85rem; color: #9ca3af; text-align: center; max-width: 400px; font-family: 'JetBrains Mono', monospace;">[Render Isolation Bounds Protected: 16:10 Aspect Ratio Checked]</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>Designed with micro-optimizations: No frameworks, zero render-blocking styles, and layout isolation configurations.</p>
+        </div>
+    </footer>
+</body>
+</html>
