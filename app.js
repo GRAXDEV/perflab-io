@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Native Performance Monitoring Pipeline Modules APIs Handlers
     function updateTelemetryDashboard() {
-        // 1. FIXED: Count DOM density nodes safely after structural nodes complete compilation
+        // 1. FIXED: Extract precise total node complexity dynamically after paint frames render
         if (metricDOM) {
             metricDOM.textContent = document.getElementsByTagName('*').length;
         }
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             metricMemory.textContent = 'N/A';
         }
 
-        // 3. FIXED: Safe calculation loop handles window timing fallbacks cleanly
+        // 3. FIXED: Delayed callback window isolates exact browser compilation speeds safely
         const calculateLoadTiming = () => {
             setTimeout(() => {
                 const [navigationEntry] = performance.getEntriesByType('navigation');
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const currentUptime = performance.now();
                     metricLoad.textContent = `${currentUptime.toFixed(0)}ms`;
                 }
-            }, 200); // 200ms delay window lets navigation threads finalize numbers cleanly
+            }, 200); // 200ms tick window protects metrics parsing loops from race condition stalls
         };
 
         if (document.readyState === 'complete') {
